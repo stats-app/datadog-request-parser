@@ -34,7 +34,7 @@ class Parser
     {
         $outMetrics = [];
         foreach( $metrics as $metric ) {
-            list( $name, $value,, $metaData ) = $metric;
+            list( $name, $time, $value, $metaData ) = $metric;
             $outMetrics[] = new Metric( $name, $value, $metaData['type'] );
         }
         return $outMetrics;

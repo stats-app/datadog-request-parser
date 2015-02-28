@@ -51,8 +51,8 @@ class TestBasicRequest extends \PHPUnit_Framework_TestCase
         ];
 
         $expectedValues = [
-            1425131744,
-            1425131744
+            0.0,
+            318.0
         ];
 
         /** @var Metric[] $metrics */
