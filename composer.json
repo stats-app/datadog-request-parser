@@ -24,6 +24,10 @@
             "TomVerran\\DataDog\\":[ "src/","tests/"]
         }
     },
+
+    "require": {
+        "tomverran/metric-objects": "dev-master"
+    },
     
     "require-dev": {
         "phpunit/phpunit": "3.7.*"

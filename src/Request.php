@@ -7,7 +7,7 @@
  */
 
 namespace TomVerran\DataDog;
-
+use TomVerran\Stats\Metric;
 
 class Request
 {

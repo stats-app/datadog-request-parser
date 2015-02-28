@@ -6,6 +6,7 @@
  * Time: 1:58 PM
  */
 namespace TomVerran\DataDog;
+use TomVerran\Stats\Metric;
 
 class TestBasicRequest extends \PHPUnit_Framework_TestCase
 {

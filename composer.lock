@@ -4,8 +4,37 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7356d5fdd7adb82adb5ab9e1ad84f61a",
-    "packages": [],
+    "hash": "6b7b37f40930e04496b56b12eb27b6ca",
+    "packages": [
+        {
+            "name": "tomverran/metric-objects",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:stats-app/metric-objects.git",
+                "reference": "7dc63595fc1a00d929e718f240f17fcb6a3a5472"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "TomVerran\\Stats\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tom Verran",
+                    "homepage": "https://carefulcoder.co.uk",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP Objects to represent DataDog metrics etc",
+            "homepage": "https://carefulcoder.co.uk",
+            "time": "2015-02-28 15:21:54"
+        }
+    ],
     "packages-dev": [
         {
             "name": "phpunit/php-code-coverage",
@@ -434,7 +463,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "tomverran/metric-objects": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

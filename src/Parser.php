@@ -6,6 +6,8 @@
  * Time: 1:54 PM
  */
 namespace TomVerran\DataDog;
+use TomVerran\Stats\Metric;
+
 class Parser
 {
     /**
