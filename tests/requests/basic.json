@@ -1,0 +1,137 @@
+{
+    "apiKey": "hello-there",
+    "system.uptime": 7251.65,
+    "python": "2.7.9 (default, Feb 20 2015, 19:01:42) \n[GCC 4.4.5]",
+    "collection_timestamp": 1425131739.903627,
+    "ioStats": {
+        "sda": {
+            "wrqm/s": "0.00",
+            "avgrq-sz": "0.00",
+            "r_await": "0.00",
+            "rkB/s": "0.00",
+            "await": "0.00",
+            "w/s": "0.00",
+            "avgqu-sz": "0.00",
+            "svctm": "0.00",
+            "wkB/s": "0.00",
+            "rrqm/s": "0.00",
+            "r/s": "0.00",
+            "%util": "0.00",
+            "w_await": "0.00"
+        }
+    },
+    "memPhysUsed": 6373,
+    "cpuWait": 0.0,
+    "system.load.15": 0.26,
+    "metrics": [
+    [
+        "system.net.packets_out.error", 1425131744, 0.0, {
+        "hostname": "ubuntu",
+        "type": "gauge",
+        "device_name": "eth0"
+    }],
+    ["system.net.bytes_sent", 1425131744, 318.0, {
+        "hostname": "ubuntu",
+        "type": "gauge",
+        "device_name": "eth0"
+    }],
+    ["system.net.tcp.out_segs", 1425131744, 8.55, {
+        "hostname": "ubuntu",
+        "type": "gauge"
+    }],
+    ["system.net.bytes_rcvd", 1425131744, 6143.2, {
+        "hostname": "ubuntu",
+        "type": "gauge",
+        "device_name": "eth0"
+    }],
+    ["system.net.packets_in.error", 1425131744, 0.0, {
+        "hostname": "ubuntu",
+        "type": "gauge",
+        "device_name": "eth0"
+    }],
+    ["system.net.tcp.in_segs", 1425131744, 8.65, {
+        "hostname": "ubuntu",
+        "type": "gauge"
+    }],
+    ["system.net.tcp.retrans_segs", 1425131744, 0.0, {
+        "hostname": "ubuntu",
+        "type": "gauge"
+    }],
+    ["system.net.packets_in.count", 1425131744, 6.4, {
+        "hostname": "ubuntu",
+        "type": "gauge",
+        "device_name": "eth0"
+    }],
+    ["system.net.packets_out.count", 1425131744, 5.3, {
+        "hostname": "ubuntu",
+        "type": "gauge",
+        "device_name": "eth0"
+    }]
+    ],
+    "service_checks": [
+    {
+        "status": 0,
+        "tags": ["check:network"],
+        "timestamp": 1425131744.032389,
+        "check": "datadog.agent.check_status",
+        "host_name": "ubuntu",
+        "message": null,
+        "id": 537
+    },
+    {
+        "status": 0,
+        "tags": null,
+        "timestamp": 1425131744.032455,
+        "check": "datadog.agent.up",
+        "host_name": "ubuntu",
+        "message": null,
+        "id": 538
+    }
+    ],
+    "memPhysUsable": 8374,
+    "memSwapFree": 1021,
+    "agentVersion": "5.2.1",
+    "cpuSystem": 1.7,
+    "system.load.norm.15": 0.065,
+    "memSwapUsed": 0,
+    "memSwapPctFree": 1.0,
+    "memCached": 2437,
+    "memPhysFree": 5766,
+    "memPhysPctUsable": 0.6898426559024632,
+    "processes": {
+        "processes": [
+            ["root", "1", "0.0", "0.0", "33788", "3148", "?", "Ss", "11:54", "0:03", "/sbin/init"],
+            ["dd-agent", "14942", "0.0", "0.0", "17648", "1192", "?", "R", "13:55", "0:00", "ps auxww"]
+        ],
+        "apiKey": "hello-there",
+        "host": "ubuntu"
+    },
+    "cpuUser": 1.62,
+    "external_host_tags": {},
+    "uuid": "testing",
+    "host-tags": {},
+    "memSwapTotal": 1021,
+    "system.load.norm.5": 0.075,
+    "memPhysTotal": 12139,
+    "memBuffers": 171,
+    "internalHostname": "ubuntu",
+    "system.load.1": 0.31,
+    "cpuIdle": 96.68,
+    "inodes": [
+        ["/dev/sda1", 1245184, 383626, 861558, "31%", "/"],
+        ["udev", 1551208, 478, 1550730, "1%", "/dev"],
+        ["tmpfs", 1553903, 556, 1553347, "1%", "/run"]
+    ],
+    "cpuStolen": 0.0,
+    "memShared": 64,
+    "system.load.norm.1": 0.0775,
+    "diskUsage": [
+        ["/dev/sda1", 19478204, 13692648, 4773076, "75%", "/"],
+        ["udev", 6204832, 4, 6204828, "1%", "/dev"],
+        ["tmpfs", 1243124, 1404, 1241720, "1%", "/run"]
+    ],
+    "os": "linux",
+    "events": {},
+    "resources": {},
+    "system.load.5": 0.3
+}
