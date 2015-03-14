@@ -69,17 +69,10 @@ class TestBasicRequest extends \PHPUnit_Framework_TestCase
 
     public function testMemoryStatsRecorded()
     {
-        $metrics = $this->request->getMetrics();
-        /** @var Metric[] $metricArray */
-        $metricArray = [];
-
-        foreach ( $metrics as $metric ) {
-            $metricArray[$metric->getName()] = $metric;
-        }
+        $metricArray = $this->getIndexedMetrics();
 
         $this->assertEquals( 'gauge', $metricArray['memPhysUsed']->getType() );
         $this->assertEquals( 6373, $metricArray['memPhysUsed']->getValue() );
-        $this->assertEquals(1425131739, $metricArray['memPhysUsed']->getTimestamp() );
 
         $this->assertEquals( 'gauge', $metricArray['memPhysFree']->getType() );
         $this->assertEquals( 5766, $metricArray['memPhysFree']->getValue() );
@@ -87,8 +80,31 @@ class TestBasicRequest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals( 'gauge', $metricArray['cpuIdle']->getType() );
         $this->assertEquals( 96.68, $metricArray['cpuIdle']->getValue() );
+    }
 
+    public function testAllMetricsHaveSameTimestamp()
+    {
+        $metrics = $this->getIndexedMetrics();
+        $expectectedTimestamp = reset( $metrics )->getTimestamp();
 
+        foreach ( $metrics as $metric ) {
+            $this->assertEquals( $expectectedTimestamp, $metric->getTimestamp() );
+        }
+    }
+
+    /**
+     * @return \TomVerran\Stats\Metric[]
+     */
+    public function getIndexedMetrics()
+    {
+        $metrics = $this->request->getMetrics();
+        /** @var Metric[] $metricArray */
+        $metricArray = [];
+
+        foreach ($metrics as $metric) {
+            $metricArray[$metric->getName()] = $metric;
+        }
+        return $metricArray;
     }
 
 } 

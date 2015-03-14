@@ -18,7 +18,11 @@ class Parser
     public function parse( $request )
     {
         $requestArray = json_decode( $request, true );
-        $metrics = array_merge( $this->parseMetrics( $requestArray['metrics'] ), $this->getMetricsFromSystemInfo( $requestArray ) );
+        $metrics = $this->parseMetrics( $requestArray['metrics'] );
+        $firstMetric = reset( $metrics );
+
+        $time = $firstMetric->getTimestamp();
+        $metrics = array_merge( $metrics, $this->getMetricsFromSystemInfo( $requestArray, $time ) );
 
         $requestObject = new Request;
         $requestObject->setMetrics( $metrics );
@@ -42,17 +46,17 @@ class Parser
 
     /**
      * Get metrics from system info
-     * @param $requestArray
+     * @param array $requestArray
+     * @param int $timestamp
      * @return Metric[]
      */
-    private function getMetricsFromSystemInfo($requestArray)
+    private function getMetricsFromSystemInfo( $requestArray, $timestamp )
     {
         $systemInfoRegexes = [
             'cpu.*',
             'mem.*',
         ];
         $regex = implode('|', $systemInfoRegexes );
-        $timestamp = (int)$requestArray['collection_timestamp'];
         $metrics = [];
 
         foreach ( $requestArray as $key => $value ) {
