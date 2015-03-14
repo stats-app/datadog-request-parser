@@ -18,7 +18,7 @@ class Parser
     public function parse( $request )
     {
         $requestArray = json_decode( $request, true );
-        $metrics = $this->parseMetrics( $requestArray['metrics'] );
+        $metrics = array_merge( $this->parseMetrics( $requestArray['metrics'] ), $this->getMetricsFromSystemInfo( $requestArray ) );
 
         $requestObject = new Request;
         $requestObject->setMetrics( $metrics );
@@ -38,5 +38,26 @@ class Parser
             $outMetrics[] = new Metric( $name, $value, $metaData['type'], $time );
         }
         return $outMetrics;
+    }
+
+    /**
+     * Get metrics from system info
+     * @param $requestArray
+     */
+    private function getMetricsFromSystemInfo($requestArray)
+    {
+        $systemInfoRegexes = [
+            'cpu.*',
+            'mem.*',
+        ];
+        $regex = implode('|', $systemInfoRegexes );
+        $metrics = [];
+
+        foreach ( $requestArray as $key => $value ) {
+           if ( preg_match("/$regex/", $key ) ) {
+               $metrics[] = new Metric($key, $value, 'gauge', $requestArray['collection_timestamp'] );
+           }
+        }
+        return $metrics;
     }
 }

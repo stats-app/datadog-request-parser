@@ -35,9 +35,9 @@ class TestBasicRequest extends \PHPUnit_Framework_TestCase
     /**
      * We should have picked up nine metrics
      */
-    public function testRequestHasNineMetrics()
+    public function testRequestHasMoreThanNineMetrics()
     {
-        $this->assertCount( 9, $this->request->getMetrics() );
+        $this->assertGreaterThan( 9, $this->request->getMetrics() );
     }
 
     /**
@@ -66,4 +66,28 @@ class TestBasicRequest extends \PHPUnit_Framework_TestCase
             $this->assertEquals( 'gauge', $metric->getType() );
         }
     }
+
+    public function testMemoryStatsRecorded()
+    {
+        $metrics = $this->request->getMetrics();
+        /** @var Metric[] $metricArray */
+        $metricArray = [];
+
+        foreach ( $metrics as $metric ) {
+            $metricArray[$metric->getName()] = $metric;
+        }
+
+        $this->assertEquals( 'gauge', $metricArray['memPhysUsed']->getType() );
+        $this->assertEquals( 6373, $metricArray['memPhysUsed']->getValue() );
+
+        $this->assertEquals( 'gauge', $metricArray['memPhysFree']->getType() );
+        $this->assertEquals( 5766, $metricArray['memPhysFree']->getValue() );
+
+
+        $this->assertEquals( 'gauge', $metricArray['cpuIdle']->getType() );
+        $this->assertEquals( 96.68, $metricArray['cpuIdle']->getValue() );
+
+
+    }
+
 } 
