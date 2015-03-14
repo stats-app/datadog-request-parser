@@ -43,6 +43,7 @@ class Parser
     /**
      * Get metrics from system info
      * @param $requestArray
+     * @return Metric[]
      */
     private function getMetricsFromSystemInfo($requestArray)
     {
@@ -51,11 +52,12 @@ class Parser
             'mem.*',
         ];
         $regex = implode('|', $systemInfoRegexes );
+        $timestamp = (int)$requestArray['collection_timestamp'];
         $metrics = [];
 
         foreach ( $requestArray as $key => $value ) {
            if ( preg_match("/$regex/", $key ) ) {
-               $metrics[] = new Metric($key, $value, 'gauge', $requestArray['collection_timestamp'] );
+               $metrics[] = new Metric($key, $value, 'gauge', $timestamp );
            }
         }
         return $metrics;

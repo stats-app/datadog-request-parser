@@ -79,6 +79,7 @@ class TestBasicRequest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals( 'gauge', $metricArray['memPhysUsed']->getType() );
         $this->assertEquals( 6373, $metricArray['memPhysUsed']->getValue() );
+        $this->assertEquals(1425131739, $metricArray['memPhysUsed']->getTimestamp() );
 
         $this->assertEquals( 'gauge', $metricArray['memPhysFree']->getType() );
         $this->assertEquals( 5766, $metricArray['memPhysFree']->getValue() );
